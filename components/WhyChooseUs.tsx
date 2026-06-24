@@ -1,26 +1,28 @@
+/* "WHY BUSINESSES CHOOSE US" — light warm-gray background matching the flyer */
+
 const REASONS = [
   {
-    icon: ShieldIcon,
+    icon: ShieldRepIcon,
     title: "Protect Your Reputation",
     desc: "Keep your facility pest-free and your business image strong.",
   },
   {
-    icon: ListIcon,
+    icon: CustomIcon,
     title: "Customized Solutions",
     desc: "Tailored programs for your building, industry, and pest pressure.",
   },
   {
-    icon: CalendarIcon,
+    icon: CalIcon,
     title: "Scheduled & Dependable",
     desc: "Consistent service that fits your schedule and operations.",
   },
   {
-    icon: BadgeIcon,
+    icon: LicIcon,
     title: "Licensed Professionals",
     desc: "Trained, insured, and committed to the highest standards.",
   },
   {
-    icon: ChartIcon,
+    icon: RiskIcon,
     title: "Minimize Risk & Downtime",
     desc: "Prevent pest issues before they start and avoid costly disruptions.",
   },
@@ -28,96 +30,97 @@ const REASONS = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-us" className="bg-brand-charcoal py-16 md:py-20">
-      {/* Top accent */}
-      <div className="brand-rule mx-auto max-w-7xl px-6 mb-10" />
-
-      <div className="mx-auto max-w-7xl px-6">
-        {/* Section heading */}
-        <h2 className="font-display font-black uppercase text-center text-white tracking-wider mb-10"
-          style={{ fontSize: "clamp(1.6rem, 3.5vw, 2.5rem)" }}>
+    /* Only section with a light background — matches flyer exactly */
+    <section id="why-us" className="bg-brand-light py-14">
+      {/* Decorative divider lines flanking the title — matches flyer */}
+      <div className="flex items-center justify-center gap-4 mb-10 px-6">
+        <div className="flex-1 h-px bg-brand-lime-dim max-w-xs hidden sm:block" />
+        <h2
+          className="font-display font-black text-brand-black text-center whitespace-nowrap tracking-wider uppercase"
+          style={{ fontSize: "clamp(1.3rem, 2.8vw, 2rem)" }}
+        >
           Why Businesses{" "}
-          <span className="text-brand-lime">Choose Us</span>
+          <span className="text-brand-black">Choose Us</span>
         </h2>
-
-        {/* 5-column card row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
-          {REASONS.map((r) => (
-            <div
-              key={r.title}
-              className="flex flex-col items-center text-center gap-3 bg-brand-dark border border-brand-border hover:border-brand-lime-dim transition-colors p-6"
-            >
-              <div className="h-12 w-12 flex items-center justify-center bg-brand-charcoal border border-brand-border">
-                <span className="text-brand-lime">
-                  <r.icon />
-                </span>
-              </div>
-              <h3 className="font-display font-bold uppercase text-white text-base leading-tight tracking-wide">
-                {r.title}
-              </h3>
-              <p className="text-brand-silver text-sm leading-relaxed font-sans">
-                {r.desc}
-              </p>
-            </div>
-          ))}
-        </div>
+        <div className="flex-1 h-px bg-brand-lime-dim max-w-xs hidden sm:block" />
       </div>
 
-      {/* Bottom accent */}
-      <div className="brand-rule mx-auto max-w-7xl px-6 mt-10" />
+      {/* 5-column grid */}
+      <div className="mx-auto max-w-7xl px-6">
+        <ul className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+          {REASONS.map((r, i) => (
+            <li key={r.title} className="flex flex-col items-center text-center gap-3">
+              {/* Icon — dark on light background, matching flyer */}
+              <div className="h-14 w-14 flex items-center justify-center">
+                <r.icon />
+              </div>
+              <h3
+                className="font-display font-bold uppercase text-brand-black leading-tight tracking-wide"
+                style={{ fontSize: "clamp(0.85rem, 1.2vw, 1rem)" }}
+              >
+                {r.title}
+              </h3>
+              <p className="text-gray-600 text-sm leading-relaxed font-sans">{r.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }
 
-function ShieldIcon() {
+/* ── Icons in dark color for light background ── */
+
+function ShieldRepIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 100 120" fill="none" aria-hidden="true">
-      <path d="M50 5L8 20v30c0 25 18 48 42 55 24-7 42-30 42-55V20L50 5z" stroke="currentColor" strokeWidth="8" />
-      <path d="M34 55l12 12 22-24" stroke="currentColor" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round" />
+    <svg width="40" height="40" viewBox="0 0 100 120" fill="none" aria-hidden="true">
+      <path d="M50 5L8 20v30c0 25 18 48 42 55 24-7 42-30 42-55V20L50 5z"
+        stroke="#243318" strokeWidth="7" fill="none"/>
+      <path d="M33 55l13 13 23-25" stroke="#6DC02F" strokeWidth="8" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
   );
 }
 
-function ListIcon() {
+function CustomIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden="true">
-      <line x1="8" y1="6" x2="21" y2="6" />
-      <line x1="8" y1="12" x2="21" y2="12" />
-      <line x1="8" y1="18" x2="21" y2="18" />
-      <line x1="3" y1="6" x2="3.01" y2="6" />
-      <line x1="3" y1="12" x2="3.01" y2="12" />
-      <line x1="3" y1="18" x2="3.01" y2="18" />
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#243318" strokeWidth="1.8"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"/>
+      <path d="M9 3v18M3 9h6M3 15h6M15 9h6M15 15h6"/>
     </svg>
   );
 }
 
-function CalendarIcon() {
+function CalIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <line x1="16" y1="2" x2="16" y2="6" />
-      <line x1="8" y1="2" x2="8" y2="6" />
-      <line x1="3" y1="10" x2="21" y2="10" />
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#243318" strokeWidth="1.8"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <rect x="3" y="4" width="18" height="18" rx="2"/>
+      <line x1="16" y1="2" x2="16" y2="6"/>
+      <line x1="8" y1="2" x2="8" y2="6"/>
+      <line x1="3" y1="10" x2="21" y2="10"/>
+      <rect x="7" y="14" width="3" height="3" rx="0.5" fill="#6DC02F" stroke="none"/>
+      <rect x="11" y="14" width="3" height="3" rx="0.5" fill="#6DC02F" stroke="none"/>
     </svg>
   );
 }
 
-function BadgeIcon() {
+function LicIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <circle cx="12" cy="8" r="6" />
-      <path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11" />
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#243318" strokeWidth="1.8"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="8" r="5"/>
+      <path d="M3 21v-1a9 9 0 0 1 18 0v1"/>
+      <circle cx="12" cy="8" r="2" fill="#6DC02F" stroke="none"/>
     </svg>
   );
 }
 
-function ChartIcon() {
+function RiskIcon() {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <line x1="18" y1="20" x2="18" y2="10" />
-      <line x1="12" y1="20" x2="12" y2="4" />
-      <line x1="6" y1="20" x2="6" y2="14" />
-      <line x1="2" y1="20" x2="22" y2="20" />
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#243318" strokeWidth="1.8"
+      strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
     </svg>
   );
 }
