@@ -1,31 +1,32 @@
 import type { Metadata } from "next";
-import { Lora, Inter } from "next/font/google";
+import { Barlow_Condensed, Barlow } from "next/font/google";
 import "./globals.css";
 
-const lora = Lora({
+const barlowCondensed = Barlow_Condensed({
   subsets: ["latin"],
-  variable: "--font-lora",
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  variable: "--font-bc",
+  weight: ["600", "700", "800", "900"],
+  style: ["normal"],
   display: "swap",
 });
 
-const inter = Inter({
+const barlow = Barlow({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-barlow",
+  weight: ["400", "500", "600"],
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Beaver Pest Control | Local Pest Elimination Experts",
+  title: "Beaver Pest Defense | Commercial Pest Control You Can Count On",
   description:
-    "Beaver Pest Control delivers fast, guaranteed pest elimination for homes and businesses. Licensed, insured, and locally owned. Request a free inspection today.",
+    "Beaver Pest Defense delivers reliable, discreet, and effective pest management solutions for commercial and corporate properties. Licensed, insured, locally owned.",
   keywords:
-    "pest control, exterminator, ants, termites, rodents, bed bugs, mosquitoes, wasps, local pest control",
+    "commercial pest control, business pest management, IPM, pest defense, office pest control, warehouse pest control, restaurant pest control",
   openGraph: {
-    title: "Beaver Pest Control | Local Pest Elimination Experts",
+    title: "Beaver Pest Defense | Commercial Pest Control You Can Count On",
     description:
-      "Fast, guaranteed pest elimination for homes and businesses. Licensed, insured, and locally owned.",
+      "Reliable, discreet, and effective pest management for commercial and corporate properties.",
     type: "website",
   },
 };
@@ -36,8 +37,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${lora.variable} ${inter.variable}`}>
-      <body className="font-sans antialiased">{children}</body>
+    <html lang="en" className={`${barlowCondensed.variable} ${barlow.variable}`}>
+      <body className="font-sans antialiased bg-brand-black text-white">
+        {children}
+      </body>
     </html>
   );
 }

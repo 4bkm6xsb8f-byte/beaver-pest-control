@@ -1,12 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 const PHONE = "(555) 843-2837";
 const NAV_LINKS = [
-  { label: "Services", href: "#services" },
-  { label: "How It Works", href: "#how-it-works" },
   { label: "Why Us", href: "#why-us" },
+  { label: "Services", href: "#services" },
+  { label: "Properties", href: "#properties" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -24,19 +25,28 @@ export default function Navbar() {
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-deep/95 backdrop-blur-sm shadow-lg"
-          : "bg-transparent"
+          ? "bg-brand-black/95 backdrop-blur-sm shadow-[0_2px_20px_rgba(109,192,47,0.15)]"
+          : "bg-brand-black/80 backdrop-blur-sm"
       }`}
     >
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      {/* Top accent line */}
+      <div className="h-0.5 w-full bg-gradient-to-r from-brand-lime via-brand-lime-light to-brand-lime-dim" />
+
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-3">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-honeycomb rounded">
-          <span className="text-honeycomb font-display font-bold text-xl tracking-tight">
-            Beaver
-          </span>
-          <span className="text-white font-display text-xl tracking-tight">
-            Pest Control
-          </span>
+        <a
+          href="#"
+          className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime rounded"
+          aria-label="Beaver Pest Defense — home"
+        >
+          <Image
+            src="/beaver-pest-control/logo.png"
+            alt="Beaver Pest Defense"
+            width={64}
+            height={64}
+            className="h-14 w-auto"
+            priority
+          />
         </a>
 
         {/* Desktop nav */}
@@ -45,7 +55,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
-                className="text-white/80 hover:text-white text-sm font-medium tracking-wide transition-colors"
+                className="font-display font-semibold text-sm tracking-widest uppercase text-brand-silver hover:text-brand-lime transition-colors"
               >
                 {link.label}
               </a>
@@ -53,19 +63,26 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Phone CTA */}
-        <a
-          href={`tel:${PHONE.replace(/\D/g, "")}`}
-          className="hidden md:inline-flex items-center gap-2 bg-honeycomb hover:bg-yellow-500 text-deep font-semibold text-sm px-4 py-2.5 rounded-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-honeycomb focus-visible:ring-offset-2 focus-visible:ring-offset-deep"
-        >
-          <PhoneIcon />
-          {PHONE}
-        </a>
+        {/* CTA */}
+        <div className="hidden md:flex items-center gap-4">
+          <a
+            href={`tel:${PHONE.replace(/\D/g, "")}`}
+            className="text-sm text-brand-silver hover:text-white transition-colors font-sans"
+          >
+            {PHONE}
+          </a>
+          <a
+            href="#contact"
+            className="inline-flex items-center gap-1.5 bg-brand-lime hover:bg-brand-lime-light text-brand-black font-display font-bold text-sm tracking-wider uppercase px-5 py-2.5 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime focus-visible:ring-offset-2 focus-visible:ring-offset-brand-black"
+          >
+            Get a Quote
+          </a>
+        </div>
 
         {/* Mobile menu button */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden text-white p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-honeycomb"
+          className="md:hidden text-white p-2 rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-lime"
           aria-expanded={open}
           aria-label="Toggle navigation menu"
         >
@@ -75,14 +92,14 @@ export default function Navbar() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="md:hidden bg-deep/98 backdrop-blur-sm border-t border-white/10">
-          <ul className="px-6 py-4 space-y-4">
+        <div className="md:hidden bg-brand-charcoal border-t border-brand-border">
+          <ul className="px-6 py-5 space-y-5">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block text-white/80 hover:text-white font-medium py-1 transition-colors"
+                  className="block font-display font-bold text-lg uppercase tracking-widest text-brand-silver hover:text-brand-lime transition-colors"
                 >
                   {link.label}
                 </a>
@@ -90,25 +107,16 @@ export default function Navbar() {
             ))}
             <li>
               <a
-                href={`tel:${PHONE.replace(/\D/g, "")}`}
-                className="mt-2 flex items-center gap-2 bg-honeycomb text-deep font-semibold px-4 py-3 rounded-full w-full justify-center"
+                href="#contact"
+                className="flex items-center justify-center bg-brand-lime text-brand-black font-display font-bold text-sm tracking-wider uppercase py-3 mt-2"
               >
-                <PhoneIcon />
-                {PHONE}
+                Get a Free Quote
               </a>
             </li>
           </ul>
         </div>
       )}
     </header>
-  );
-}
-
-function PhoneIcon() {
-  return (
-    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-      <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
-    </svg>
   );
 }
 

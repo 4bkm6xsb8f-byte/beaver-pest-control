@@ -1,9 +1,8 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import TrustBar from "@/components/TrustBar";
+import WhyChooseUs from "@/components/WhyChooseUs";
 import Services from "@/components/Services";
-import HowItWorks from "@/components/HowItWorks";
-import WhyUs from "@/components/WhyUs";
+import PropertyTypes from "@/components/PropertyTypes";
 import ContactCTA from "@/components/ContactCTA";
 import Footer from "@/components/Footer";
 
@@ -12,10 +11,9 @@ export default function Home() {
     <main>
       <Navbar />
       <Hero />
-      <TrustBar />
+      <WhyChooseUs />
       <Services />
-      <HowItWorks />
-      <WhyUs />
+      <PropertyTypes />
       <ContactCTA />
       <Footer />
     </main>
